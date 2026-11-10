@@ -4,7 +4,8 @@
   "description": "RESTFul API Application - Given",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server"
+    "start": "nodemon server",
+    "test": "node test_assignment3.js"
   },
   "keywords": [
     "nodejs",

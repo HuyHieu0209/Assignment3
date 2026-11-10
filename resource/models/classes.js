@@ -2,14 +2,15 @@ const mongoose = require('mongoose');
 
 const enrollmentSchema = new mongoose.Schema({
     studentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Student', required: true },
-    status: { type: String, enum: ['ENROLLED', 'DROPPED'], default: 'ENROLLED' },
+    status: { type: String, default: 'enrolled' },
 }, { _id: false });
 
 const classSchema = new mongoose.Schema({
-    classCode: { type: String, required: true, unique: true },
     className: { type: String, required: true },
     subjectId: { type: mongoose.Schema.Types.ObjectId, ref: 'Subject', required: true },
+    lecturerName: { type: String },
+    status: { type: String },
     enrollments: [enrollmentSchema],
-}, { timestamps: true });
+}, { timestamps: true, strict: false });
 
 module.exports = mongoose.model('Class', classSchema);
